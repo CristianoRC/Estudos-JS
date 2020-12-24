@@ -20,8 +20,7 @@ class Carro {
         if (this.portasTravadas)
             console.info("Carro andando")
         else {
-            this.exibirErroDePortasDestravadas();
-            this.travarPortas();
+            carroEletricorPortas();
             this.andar();
         }
     }
