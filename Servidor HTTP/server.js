@@ -1,8 +1,12 @@
 const http = require("http")
 const Router = require("./router")
 const DEFAULT_HEADER = { "Content-Type": "application/json" }
-const homeController = require("./controllers/home");
-const taskController = require("./controllers/task");
+const configureRoutes = require("./configureRoutes")
+
+const splitUrl = (url) => {
+    const [_, route, id] = url.split("/")
+    return { route, id: isNaN(id) ? id : Number(id) }
+}
 
 const handler = (request, response) => {
 
@@ -26,16 +30,6 @@ const startServer = (port) => {
     configureRoutes();
     http.createServer(handler)
         .listen(port, console.log("O servidor esta rodando na porta", port, '-', `http://localhost:${port}`))
-}
-
-const configureRoutes = () => {
-    Router.addRoute("home", "get", homeController);
-    Router.addRoute("task", "get", taskController);
-}
-
-const splitUrl = (url) => {
-    const [first, route, id] = url.split("/")
-    return { route, id: isNaN(id) ? id : Number(id) }
 }
 
 module.exports = startServer;
