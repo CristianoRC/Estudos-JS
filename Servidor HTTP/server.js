@@ -8,7 +8,7 @@ const splitUrl = (url) => {
     return { route, id: isNaN(id) ? id : Number(id) }
 }
 
-const handler = (request, response) => {
+const handler = async (request, response) => {
 
     const { url, method } = request;
     const splitedUrl = splitUrl(url);
@@ -16,7 +16,7 @@ const handler = (request, response) => {
     const action = Router.getRouteAction(splitedUrl.route, method);
 
     if (action) {
-        response = action(request, response);
+        response = await action(request, response);
         response.writeHead(200, DEFAULT_HEADER)
     }
     else {
