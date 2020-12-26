@@ -25,7 +25,7 @@ const handler = async (request, response) => {
         response.writeHead(404)
     }
 
-    response.end()
+    return response.end();
 }
 
 const startServer = (port) => {

@@ -1,5 +1,6 @@
+const { request } = require("http");
 const TaskFactory = require("../factories/taskFactory")
-const taskController = async (request, response) => {
+const getTask = async (request, response) => {
     const taskId = request.queryString.id;
     const factory = TaskFactory.generateInstance();
     const tasks = await factory.find(taskId);
@@ -7,5 +8,9 @@ const taskController = async (request, response) => {
     return response;
 }
 
+const insertTask = async (request, response) => {
 
-module.exports = taskController;
+}
+
+
+module.exports = { getTask, insertTask }
