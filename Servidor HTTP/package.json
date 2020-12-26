@@ -4,11 +4,14 @@
   "description": "Exemplo de como criar um servidor HTTP(Web API) sem usar framworks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "api": "npx nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
