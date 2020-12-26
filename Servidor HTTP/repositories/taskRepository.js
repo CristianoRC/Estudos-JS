@@ -20,7 +20,7 @@ class TaskRepository {
         return all.find(x => x.id == taskId) ?? {};
     }
 
-    async createTask(task) {
+    async create(task) {
         var allTasks = await this._getFileContent();
         allTasks.push(task);
 
