@@ -5,14 +5,16 @@ const configureRoutes = require("./configureRoutes")
 
 const splitUrl = (url) => {
     const [_, route, id] = url.split("/")
-    return { route, id: isNaN(id) ? id : Number(id) }
+
+    return { route, id: isNaN(id) || id === "" ? id : Number(id) }
 }
 
 const handler = async (request, response) => {
 
     const { url, method } = request;
     const splitedUrl = splitUrl(url);
-    request.queryString = splitedUrl.id;
+    request.queryString = { id: splitedUrl.id };
+
     const action = Router.getRouteAction(splitedUrl.route, method);
 
     if (action) {
