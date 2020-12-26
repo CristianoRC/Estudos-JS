@@ -1,6 +1,8 @@
-const taskController = (request, response) => {
-    response.write(JSON.stringify({ texto: 'TASK' }));
-
+const TaskFactory = require("../factories/taskFactory")
+const taskController = async (request, response) => {
+    const factory = TaskFactory.generateInstance();
+    const tasks = await factory.find();
+    response.write(JSON.stringify(tasks));
     return response;
 }
 

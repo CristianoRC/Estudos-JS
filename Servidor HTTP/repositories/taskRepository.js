@@ -1,8 +1,8 @@
 const { readFile, writeFile } = require("fs/promises")
 
 class TaskRepository {
-    constructor() {
-        this.file = "../db/data.json";
+    constructor(file) {
+        this.file = file;
     }
 
     async _getFileContent() {

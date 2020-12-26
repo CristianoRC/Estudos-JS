@@ -1,5 +1,3 @@
-const TaskRepository = require("../repositories/taskRepository");
-
 class TaskService {
     constructor( repository ) {
         this.repository = repository;
@@ -16,6 +14,5 @@ class TaskService {
 
 
 }
-
 
 module.exports = TaskService;
